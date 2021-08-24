@@ -9,11 +9,11 @@ import (
 
 //Creamos nuestra función Main (inicial) para levantar nuestro servidor web en Go
 func main() {
-	fs := http.FileServer(http.Dir("./static/"))             //definimos el fichero fileServer y le indicamos que, el directorio de los archivos estáticos es la carpeta STATIC. Todo queda guardado en la variable fs, correspondiente a file system
-	http.Handle("/static", http.StripPrefix("/static/", fs)) //Luego, con handle le decimos al servidor web que, cuando lleguen peticiones de contenido estático, sirva las mismas a través del prefijo indicado stripPrefix()
-	http.HandleFunc("/", home)                               //respuesta para home (una función Go apropiada con contenido HTML)
+	fs := http.FileServer(http.Dir("./static/"))              //definimos el fichero fileServer y le indicamos que, el directorio de los archivos estáticos es la carpeta STATIC. Todo queda guardado en la variable fs, correspondiente a file system
+	http.Handle("/static/", http.StripPrefix("/static/", fs)) //Luego, con handle le decimos al servidor web que, cuando lleguen peticiones de contenido estático, sirva las mismas a través del prefijo indicado stripPrefix()
 
-	http.HandleFunc("/info", info) //respuesta para home (una función Go apropiada con contenido HTML)
+	http.HandleFunc("/", home)     //respuesta para home (una función Go apropiada con contenido HTML)
+	http.HandleFunc("/info", info) //respuesta para info (una función Go apropiada con información del servidor)
 
 	http.ListenAndServe(":8080", nil)
 }
@@ -24,7 +24,6 @@ func home(w http.ResponseWriter, r *http.Request) {
 	html += "<h1 class='hola'>Hola, mundo!</h1>"
 	html += "</body>"
 	html += "</html>"
-
 	w.Write([]byte(html))
 }
 
