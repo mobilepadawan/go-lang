@@ -40,7 +40,7 @@ func info(w http.ResponseWriter, req *http.Request) {
 
 var productos []string //defino una variable productos, que será un array de strings
 
-func producto(w http.ResponseWriter, req *http.Request) {
+func producto(w http.ResponseWriter, r *http.Request) {
 
 	r.ParseForm()
 	add, okForm := r.Form["add"] //peticiono el form, quien me devuelve 2 params: "add" si me devuelve algo. "okForm" si me devolvió algo o no (boolean)
@@ -60,7 +60,7 @@ func producto(w http.ResponseWriter, req *http.Request) {
 		html := "<html>"
 		html += "<body>"
 		html += "<h1 class='hola'>Productos</h1>"
-		html += "<p class='hola'>Producto: " + producto[pos] + "</p>"
+		html += "<p class='hola'>Producto: " + productos[pos] + "</p>"
 		html += "</body>"
 		html += "</html>"
 		w.Write([]byte(html))
