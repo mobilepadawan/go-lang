@@ -36,7 +36,7 @@ func info(w http.ResponseWriter, req *http.Request) {
 }
 
 //defino una variable productos, que será un array de strings
-var productos = []string{"Mouse", "Teclado", "Display"}
+var productos = []string{"Mouse", "Teclado", "Display", "Webcam", "Pad", "Ultrawide screen display"}
 
 func producto(w http.ResponseWriter, r *http.Request) {
 	//alta de un elemento para el array productos...
@@ -45,7 +45,6 @@ func producto(w http.ResponseWriter, r *http.Request) {
 	if okForm && len(add) == 1 {
 		productos = append(productos, string(add[0])) //la función append() agrega el producto al array 'productos'
 		w.Write([]byte("Producto agregado correctamente"))
-
 		return
 	}
 
