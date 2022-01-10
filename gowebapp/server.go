@@ -35,7 +35,8 @@ func info(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintln(w, "RemoteAddr: ", req.RemoteAddr)
 }
 
-var productos []string //defino una variable productos, que será un array de strings
+//defino una variable productos, que será un array de strings
+var productos = []string{"Mouse", "Teclado", "Display"}
 
 func producto(w http.ResponseWriter, r *http.Request) {
 	//alta de un elemento para el array productos...
