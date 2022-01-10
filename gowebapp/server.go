@@ -38,7 +38,7 @@ func info(w http.ResponseWriter, req *http.Request) {
 var productos []string //defino una variable productos, que será un array de strings
 
 func producto(w http.ResponseWriter, r *http.Request) {
-
+	//alta de un elemento para el array productos...
 	r.ParseForm()
 	add, okForm := r.Form["add"] //peticiono el form, quien me devuelve 2 params: "add" si me devuelve algo. "okForm" si me devolvió algo o no (boolean)
 	if okForm && len(add) == 1 {
