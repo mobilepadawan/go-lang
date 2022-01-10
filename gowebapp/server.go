@@ -1,11 +1,10 @@
 //Guide tutorial: https://www.youtube.com/watch?v=XZaBie7O0Rk
 package main
 
-//importamos el paquete strconv que sirve para convertir cadenas de string
 import (
 	"fmt"		//importamos el paquete de datos fmt, que sirve para formatear datos en Go
 	"net/http"	//importamos la librería NET/HTTP para crear nuestro servidor
-	"strconv"
+	"strconv"	//importamos el paquete strconv que sirve para convertir cadenas de string
 )
 
 //Creamos nuestra función Main (inicial) para levantar nuestro servidor web en Go
