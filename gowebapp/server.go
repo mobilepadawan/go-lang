@@ -2,9 +2,9 @@
 package main
 
 import (
-	"fmt"		//importamos el paquete de datos fmt, que sirve para formatear datos en Go
-	"net/http"	//importamos la librería NET/HTTP para crear nuestro servidor
-	"strconv"	//importamos el paquete strconv que sirve para convertir cadenas de string
+	"fmt"      //importamos el paquete de datos fmt, que sirve para formatear datos en Go
+	"net/http" //importamos la librería NET/HTTP para crear nuestro servidor
+	"strconv"  //importamos el paquete strconv que sirve para convertir cadenas de string
 )
 
 //Creamos nuestra función Main (inicial) para levantar nuestro servidor web en Go
@@ -22,7 +22,7 @@ func main() {
 func home(w http.ResponseWriter, r *http.Request) {
 	html := "<html>"
 	html += "<body>"
-	html += "<h1 class='hola'>Hola, mundo!</h1>"
+	html += "<h1 class='hola'>Hola mundo!</h1>"
 	html += "</body>"
 	html += "</html>"
 	w.Write([]byte(html))
@@ -35,16 +35,16 @@ func info(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintln(w, "RemoteAddr: ", req.RemoteAddr)
 }
 
-var productos []string //defino una variable productos, que será un array de strings
+//defino una variable productos, que será un array de strings
+var productos = []string{"Mouse", "Teclado", "Display", "Webcam", "Pad", "Ultrawide screen display"}
 
 func producto(w http.ResponseWriter, r *http.Request) {
-
+	//alta de un elemento para el array productos...
 	r.ParseForm()
 	add, okForm := r.Form["add"] //peticiono el form, quien me devuelve 2 params: "add" si me devuelve algo. "okForm" si me devolvió algo o no (boolean)
 	if okForm && len(add) == 1 {
 		productos = append(productos, string(add[0])) //la función append() agrega el producto al array 'productos'
 		w.Write([]byte("Producto agregado correctamente"))
-
 		return
 	}
 
